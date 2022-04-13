@@ -6,8 +6,8 @@ const SCISSORS = "SCISSORS";
 const DEFAULT_USER_CHOICE = ROCK;
 
 const RESULT_DRAW = "DRAW";
-const RESULT_PLAYER_WINS = "PLAYER WINS"
-const RESULT_COMPUTER_WINS = "COMPUTER WINS"
+const RESULT_PLAYER_WINS = "PLAYER WINS";
+const RESULT_COMPUTER_WINS = "COMPUTER WINS";
 
 
 let gameIsRunning = false;
@@ -54,6 +54,15 @@ startGameBtn.addEventListener("click", function startAnonFunc(){
     console.log("Game is starting...");
     const playerChoice = getPlayerChoice();
     const computerChoice = getComputerChoice();
-    const winner = getWinner(computerChoice,playerChoice)
-    console.log(winner);
+    const winner = getWinner(computerChoice,playerChoice);
+    let message = `You picked ${playerChoice}, computer picked ${computerChoice}, therefore you `;;
+    if (winner === RESULT_DRAW) {
+        message = message + `had a draw.`;
+    } else if ( winner === RESULT_PLAYER_WINS ) {
+        message = message + `won.`;
+    } else {
+        message = message + `lost.`;
+    }
+    alert(message);
+    gameIsRunning = false;
 });
